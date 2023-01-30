@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- in form: action is specified "/upload" which will take us to the "upload url" and request method (post) is given -->
+    <form action="/upload" method="post" style="display: grid; gap: 1rem; max-width: 500px; margin: 50px auto; grid-template-columns: auto 1fr;" enctype="multipart/form-data" >
+        <label for="file">File.: </label>
+        <input type="file" id="file" name="file" required />
+        <label for="password">Password.: </label>
+        <input type="password" id="password" name="password" />
+        <button style="grid-column: span 2;" type="submit">Share</button>
+    </form>
+
+<!-- whatever we write in the ejs tags will run on the server side(not on the client) -->
+<!-- and in the href the '=' sign in front of the locals.fileLink means that it will display the value directly i.e the link itself-->
+    <% if (locals.fileLink != null){ %>
+        <div style="margin-bottom: 1rem;"> Your file is uploaded: 
+            <a href="<%= locals.fileLink %>"><%= locals.fileLink %> </a>        
+        </div>
+    <% } %>
+</body>
+
+</html>
